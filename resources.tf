@@ -63,7 +63,7 @@ resource "local_file" "nginx-conf" {
   })
 }
 
-data "digitalocean_ssh_key" "key" {
+data "digitalocean_ssh_key" "www-1" {
     name = var.do_ssh_key
 }
 
@@ -73,7 +73,7 @@ resource "digitalocean_droplet" "nginx" {
   region = var.do_region
   size = var.do_size
 
-  ssh_keys = [ data.data.digitalocean_ssh_key.devsecops.id ]
+  ssh_keys = [ data.data.digitalocean_ssh_key.www-1.id ]
 
   connection {
     type = "ssh"
