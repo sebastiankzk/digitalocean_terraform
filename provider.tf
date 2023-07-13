@@ -16,14 +16,12 @@ terraform {
 }
 
 provider docker {
-  host = "tcp://${var.docker_host}:2376"
-  cert_path = var.docker_cert_path
+    host = "tcp://${var.docker_host}:2376"
+    cert_path = var.docker_cert_path
 }
 
 provider digitalocean {
-  token = var.do_token
+    token = var.do_token
 }
 
-provider local {
-
-}
+provider local {}

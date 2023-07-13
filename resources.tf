@@ -16,7 +16,7 @@ resource "docker_volume" "data-vol" {
 }
 
 ## Spin off a container
-resource "docker_container" "bgg-database" {
+resource "docker_container" "bgg-database"{
     name = "${var.app_namespace}-bgg-database"
     image = docker_image.bgg-database.image_id
 
@@ -40,13 +40,13 @@ resource "docker_container" "bgg-backend" {
     name = "${var.app_namespace}-bgg-backend-${count.index}"
     image = docker_image.bgg-backend.image_id
 
-    networks_advanced {
+     networks_advanced {
         name = docker_network.bgg-net.id
     }
 
     env = [
         "BGG_DB_USER=root",
-        "BGG_DB_PASSSWORD=changeit",
+        "BGG_DB_PASSWORD=changeit",
         "BGG_DB_HOST=${docker_container.bgg-database.name}",
     ]
 
@@ -78,8 +78,8 @@ resource "digitalocean_droplet" "nginx" {
     connection {
         type = "ssh"
         user = "root"
-        private_key = file(var.ssh_private_key)
-        host = self.ipv4_address
+        private_key =  file(var.ssh_private_key)
+        host= self.ipv4_address
     }
 
     provisioner "remote-exec" {
@@ -103,14 +103,14 @@ resource "digitalocean_droplet" "nginx" {
     }
 }
 
-resource "local_file" "root_at_nginx" {
+resource "local_file" "root_at_nginx"{
     filename = "root@${digitalocean_droplet.nginx.ipv4_address}"
     content = ""
     file_permission = "0444"
 }
 
 output nginx_ip {
-    value = digitalocean_droplet.nginx.ipv4_address
+    value= digitalocean_droplet.nginx.ipv4_address
 }
 
 output backend_ports {

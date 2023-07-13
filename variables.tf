@@ -1,30 +1,30 @@
 variable do_token {
     type = string
-    sensitive = true    
+    sensitive = true
 }
 
 variable docker_host {
-    type = string
+    type = string 
 }
 
 variable docker_cert_path {
     type = string
-    sensitive = true  
+    sensitive = true
 }
 
 variable app_namespace {
     type = string
-    default = "sg" 
+    default = "sg"
 }
 
 variable database_version {
     type = string
-    default = "v3.3" 
+    default = "v3.1"
 }
 
 variable backend_version {
     type = string
-    default = "v3" 
+    default = "v3"
 }
 
 variable backend_instance_count {
@@ -32,15 +32,14 @@ variable backend_instance_count {
     default = 3
 }
 
-
 variable do_region {
     type = string
-    default = "sgp1" 
+    default = "sgp1"
 }
 
 variable do_image {
     type = string
-    default = "ubuntu-20-04-x64" 
+    default = "ubuntu-20-04-x64"
 }
 
 variable do_size {
@@ -50,9 +49,9 @@ variable do_size {
 
 variable do_ssh_key {
     type = string
-    default = "www-1" 
+    default = "www-1"
 }
 
 variable ssh_private_key {
-    type = string 
+    type = string
 }
