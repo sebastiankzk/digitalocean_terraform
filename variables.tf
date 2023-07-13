@@ -9,7 +9,7 @@ variable docker_host {
 
 variable docker_cert_path {
     type = string
-    sensensitive = true  
+    sensitive = true  
 }
 
 variable app_namespace {
